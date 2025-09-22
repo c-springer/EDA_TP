@@ -52,6 +52,31 @@ int main()
 
     ///////////////////////////////////////////////////////////
     // C O M P L E T A R
+
+    float temp, amplitude;
+    int n = 0;
+
+    do //algoritmo para organizar os elementos por ordem crescente
+    {
+        for (int j = 0; j < (nelems - 1); j++)
+        {
+            if (valores[j] > valores[j + 1])
+            {
+                temp = valores[j];
+                valores[j] = valores[j + 1];
+                valores[j + 1] = temp;
+
+                n++;
+            }
+        }
+        
+    } while (n > 0);
+
+
+
+
+    
     delete[] valores; // libertação da memória ocupada pelo array dinâmico
+    
     return 0;
 }
