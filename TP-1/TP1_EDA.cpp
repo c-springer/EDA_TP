@@ -54,7 +54,7 @@ int main()
     //codigo novo
 
 
-    float temp = 0, amp_elems = 0,val_min ,val_max , amp_classes = 0, media, sum_elems, dp, sum_dp;
+    float temp = 0, amp_elems = 0,val_min ,val_max , amp_classes = 0, media, sum_elems = 0, dp, sum_dp = 0;
     
     int n, j;
 
@@ -136,19 +136,19 @@ int main()
         printf("\n");
     }
     
-    for (int a = 0; i < nelems; a++) //loop para somatorio
+    for (int e = 0; e < nelems; e++) //loop para somatorio
     {
-        sum_elems += valores[a];
+        sum_elems += valores[e];
     }
     media = sum_elems / nelems; //calculo da media
     printf("\nMédia: %.2f\n", media);
 
-    for (int b = 0; b < nelems; b++) //loop para somatorio do desvio-padrao
+    for (int f = 0; f < nelems; f++) //loop para somatorio do desvio-padrao
     {
-        sum_dp += pow(valores[b] - media, 2);
+        sum_dp += pow(valores[f] - media, 2);
     }
     dp = sqrt(sum_dp / nelems); // calculo do desvio-padrao
-    printf("Desvio padrão: %.2f\n", dp);
+    printf("Desvio padrão: %.2f\n\n\n", dp);
 
 
     delete[] valores; // libertação da memória ocupada pelo array dinâmico
