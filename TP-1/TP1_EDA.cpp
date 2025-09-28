@@ -5,7 +5,6 @@
 
 int main()
 {
-
     setlocale(LC_NUMERIC, "C");
 
     FILE* pfile; // Apontador para uma estrutura de um ficheiro
@@ -50,8 +49,10 @@ int main()
 
     fclose(pfile); // fecho do ficheiro
 
+
     ///////////////////////////////////////////////////////////
-    // C O M P L E T A R
+    //codigo novo
+
 
     float temp = 0, amp_elems = 0,val_min ,val_max , amp_classes = 0, media, sum_elems, dp, sum_dp;
     
@@ -65,7 +66,6 @@ int main()
         {
             if (valores[j] > valores[j + 1])
             {
-                // printf("%.2f \n", valores[j]);
                 temp = valores[j];
                 valores[j] = valores[j + 1];
                 valores[j + 1] = temp;
@@ -76,10 +76,6 @@ int main()
         
     } while (n > 0);
 
-    printf("%.2f\n", valores);
-    printf("v max: %.2f\n", valores[nelems - 1]);
-    printf("v min: %.2f\n", valores[0]);
-
     val_min = valores[0];
     val_max = valores[nelems - 1];
 
@@ -87,13 +83,59 @@ int main()
 
     amp_classes = amp_elems / nclasses; //amplitude por classe
 
-    printf("amplitude: %.2f\n\n", amp_elems);
+    //titulos das colunas
+    printf("%12s     | %5s | %8s | %s\n", "Valores", "Freq Abs", "Freq Rel", "Histograma");
 
+    for (int b = 0; b < nclasses; b++) //loop por linha
+    {
+        int fa = 0;
+        float lim_inf, lim_sup, fr = 0;
+        char hg = '*'; 
 
+        lim_inf = val_min + (amp_classes * b);
+        lim_sup = val_min + (amp_classes * (b + 1));
 
+        printf(" %5.2f a %.2f ", lim_inf, lim_sup); //coluna de valores
+        
+        if (b < nclasses - 1)
+        {
+            printf("  |");
+        } else printf(" |");
+        
+        for (int c = 0; c < nelems; c++) //coluna frequencia absoluta
+        {
+            if (lim_sup == val_max)
+            {
+                if (valores[c] >= lim_inf && valores[c] <= lim_sup)
+                {
+                    fa++;
+                }
+            }
+            
+            else if (valores[c] >= lim_inf && valores[c] < lim_sup)
+            {
+                fa++;
+            }
+        }
+
+        printf("%6d   ", fa);
+
+        printf(" |");
+
+        fr = (fa * 100) / nelems; //coluna frequencia relativa
+        printf("%7.1f  ", fr);
+        
+        printf(" |");
+
+        printf("   ");
+        for (int d = 0; d < fa; d++) //coluna representação grafica
+        {
+            printf("%c", hg);
+        }
+
+        printf("\n");
+    }
     
-
-
     for (int a = 0; i < nelems; a++) //loop para somatorio
     {
         sum_elems += valores[a];
@@ -107,6 +149,7 @@ int main()
     }
     dp = sqrt(sum_dp / nelems); // calculo do desvio-padrao
     printf("Desvio padrão: %.2f\n", dp);
+
 
     delete[] valores; // libertação da memória ocupada pelo array dinâmico
     
