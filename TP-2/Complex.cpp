@@ -32,6 +32,11 @@ double  Complex::imag()
     return im;
 }
 
+void Complex::read()
+{
+    scanf("%lf + i%lf", &re, &im);
+}
+
 void Complex::print()
 {
     printf("%lf + i%lf", re, im);
@@ -99,12 +104,12 @@ Complex Complex::operator* (double k)
     return Complex(re * k, im * k);
 }
 
-/////////////////    REVER    ////////////////////
-
 Complex Complex::operator / (Complex& c) 
 {
-    Complex num = (*this) * c.conjugate();
-    Complex denom = c * c.conjugate();
+    Complex conj = c.conjugate();
+    
+    Complex num = (*this) * conj;
+    Complex denom = c * conj;
 
     return num / denom.re;
 }

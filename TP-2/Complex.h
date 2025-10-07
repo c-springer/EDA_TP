@@ -16,7 +16,10 @@ class Complex
         /* devolve a parte imaginária do complexo */
         double imag();
 
-        /* escreve no ecrá o complexo na forma (a + bi) */
+        /* complexo introduzido pelo utilizador na forma a + ib*/
+        void read();
+
+        /* escreve no ecrá o complexo na forma (a + ib) */
         void print();
 
         /* devolve o conjugado do complexo */
