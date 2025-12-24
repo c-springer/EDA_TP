@@ -1,1 +1,1 @@
-# EDA_TP
+This project was developed as part of the Data Structure and Algorithms course of the 2nd year of the [Bachelor's in Electrical Engineering](https://www.isel.pt/en/curso/bsc-degree/electrical-engineering) from Lisbon Higher Institute of Engineering.
